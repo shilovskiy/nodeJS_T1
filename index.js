@@ -12,7 +12,10 @@ class Pokemon {
   show(){
       console.log("Pokemon %s level %d",this.name,this.level);
   }
-  valueof(){
+  valueOf(){
+    return this.level;
+  }
+  getPokemon(){
     return this;
   }
 }
@@ -47,29 +50,11 @@ class PokemonList extends Array {
   max(){
     //return  Math.max.apply(null, this.map(item => item.level));
    return this.reduce((prev,curr)=>{
-     console.log(prev);
-     console.log(curr);
-     prev.level<curr.Level ? prev : curr} )
+     return prev>curr ? prev.getPokemon() : curr.getPokemon()} )
   }
 }
 
-
-
-let pok1 = new Pokemon("Vasj1a",5);
-pok1.show();
-console.log(pok1.valueof());
-
-
-let pok2 = new Pokemon("Pikachu",80);
-
-
-
-let poklist = new PokemonList(pok1,pok2);
-console.log(poklist);
-poklist.add("testman",85);
-console.log(poklist);
-
-
+//— Создать два списка покемонов и сохранить их в переменных lost и found
 let lost = new PokemonList();
 lost.add("Crotine",12);
 lost.add("Barrados",17);
@@ -81,32 +66,30 @@ lost.add("Bellibia",42);
 lost.add("Venomeleon",47);
 lost.add("Magmeleon",52);
 lost.add("Dinoscythe",57);
-console.log(lost);
-
+lost.show();
 
 
 let found = new PokemonList();
-
-console.log(lost);
-
 found.add("Catectric",15);
 found.add("Wallabite",19);
 found.add("Wolvia",24);
 found.add("Jagoss",29);
 found.add("Eleron",34);
 found.add("Whirlphant",39);
-found.add("Glacamel",44);
+found.add("Glacamel",80);
 found.add("Fluffanzee",49);
 found.add("Repelican",54);
 found.add("Ursign",59);
 
-//console.log(found);
 found.show();
 
-
+//Достать покемона из lost
 let new_pok=lost.getPokemon();
-console.log(new_pok);
+new_pok.show();
 
+//добавить покемона в found
 found.add(new_pok.name,new_pok.level);
 found.show();
-console.log('max',found.max());
+
+//Максимальный покемон
+found.max().show();
