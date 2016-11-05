@@ -25,9 +25,7 @@ class Pokemon {
 //который принимает в качестве аргументов имя и уровень, создает нового
 //покемона и добавляет его в список.
 class PokemonList extends Array {
-  constructor(...args) {
-      super(...args);
-  }
+
   last() {
       return this[this.length - 1];
   }
